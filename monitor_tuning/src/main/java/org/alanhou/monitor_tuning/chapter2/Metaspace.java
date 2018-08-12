@@ -1,13 +1,17 @@
 package org.alanhou.monitor_tuning.chapter2;
 import java.util.ArrayList;
 import java.util.List;
- 
+
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 
-
+/*
+ * https://blog.csdn.net/bolg_hero/article/details/78189621
+ * 继承ClassLoader是为了方便调用defineClass方法，因为该方法的定义为protected
+ * */
 public class Metaspace extends ClassLoader {
+	
     public static List<Class<?>> createClasses() {
         // 类持有
         List<Class<?>> classes = new ArrayList<Class<?>>();
@@ -24,12 +28,11 @@ public class Metaspace extends ClassLoader {
             mw.visitVarInsn(Opcodes.ALOAD, 0);
             // 第二个指令为调用父类Object的构造函数
             mw.visitMethodInsn(Opcodes.INVOKESPECIAL, "java/lang/Object",
-                    "<init>", "()V", false);
+                    "<init>", "()V");
             // 第三条指令为return
             mw.visitInsn(Opcodes.RETURN);
             mw.visitMaxs(1, 1);
             mw.visitEnd();
- 
             Metaspace test = new Metaspace();
             byte[] code = cw.toByteArray();
             // 定义类
