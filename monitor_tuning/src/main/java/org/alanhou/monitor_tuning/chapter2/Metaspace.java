@@ -39,7 +39,7 @@ public class Metaspace extends ClassLoader {
             Class<?> exampleClass = test.defineClass("Class" + i, code, 0, code.length);
             classes.add(exampleClass);
         }
-        return classes;
+         return classes;
     }
 }
 
