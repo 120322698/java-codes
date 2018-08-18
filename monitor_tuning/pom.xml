@@ -6,7 +6,7 @@
 	<groupId>org.alanhou</groupId>
 	<artifactId>monitor_tuning</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>monitor_tuning</name>
 	<description>Demo project for Spring Boot</description>
